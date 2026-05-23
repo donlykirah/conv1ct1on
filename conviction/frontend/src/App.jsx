@@ -7,7 +7,7 @@ import VoteScales from './components/VoteScales';
 import Controls from './components/Controls';
 import DebateTranscript3D from './components/DebateTranscript3D';
 
-const BACKEND_URL = 'http://localhost:3001';
+const BACKEND_URL = 'https://conviction-backend.onrender.com';
 const api = axios.create({ baseURL: `${BACKEND_URL}/api` });
 
 function App() {
