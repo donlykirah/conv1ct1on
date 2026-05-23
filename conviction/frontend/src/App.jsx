@@ -376,7 +376,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-10 py-5 flex justify-between items-center">
           <div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
-              CONVICTION
+              BEMA
             </h1>
             <p className="text-xs text-amber-400/60 mt-1">SENATE CHAMBER · ARC L1</p>
           </div>
@@ -441,11 +441,11 @@ function App() {
             transition={{ type: "spring", damping: 25 }}
             style={{
               position: 'fixed',
-              bottom: '16px',
+              bottom: '32px',
               left: '50%',
               transform: 'translateX(-50%)',
               zIndex: 30,
-              width: 'min(700px, 85vw)'
+              width: '720px'
             }}
           >
             <Controls 
@@ -521,11 +521,11 @@ function App() {
             transition={{ type: "spring", damping: 25 }}
             style={{
               position: 'fixed',
-              bottom: '16px',
+              bottom: '32px',
               left: '120px',
               zIndex: 30,
-              width: 'min(600px, 50vw)',
-              maxWidth: '70%'
+              width: 'calc(100% - 500px)',
+              maxWidth: '800px'
             }}
           >
             <DebateTranscript3D 
@@ -541,11 +541,12 @@ function App() {
       {/* Vote Scales */}
       <div style={{
         position: 'fixed',
-        right: '16px',
+        right: '32px',
         top: '50%',
         transform: 'translateY(-50%)',
         zIndex: 20,
-        width: 'min(280px, 25vw)'
+        border-radius: '50px',
+        width: '340px'
       }}>
         <VoteScales votes={currentDebate?.votes || { BUY: 0, HOLD: 0, REDUCE: 0 }} txHash={txHash} />
       </div>

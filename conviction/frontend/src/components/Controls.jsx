@@ -26,7 +26,7 @@ function Controls({ onStartDebate, isDebating, onClose,  onSubmitCustom }) {
     <div style={{
       backgroundColor: 'rgba(0,0,0,0.85)',
       backdropFilter: 'blur(20px)',
-      borderRadius: '20px',
+      borderRadius: '16px',
       padding: '24px',
       border: '1px solid rgba(255,193,7,0.3)',
       boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
