@@ -441,11 +441,11 @@ function App() {
             transition={{ type: "spring", damping: 25 }}
             style={{
               position: 'fixed',
-              bottom: '32px',
+              bottom: '16px',
               left: '50%',
               transform: 'translateX(-50%)',
               zIndex: 30,
-              width: '720px'
+              width: 'min(700px, 85vw)'
             }}
           >
             <Controls 
@@ -521,11 +521,11 @@ function App() {
             transition={{ type: "spring", damping: 25 }}
             style={{
               position: 'fixed',
-              bottom: '32px',
+              bottom: '16px',
               left: '120px',
               zIndex: 30,
-              width: 'calc(100% - 500px)',
-              maxWidth: '800px'
+              width: 'min(600px, 50vw)',
+              maxWidth: '70%'
             }}
           >
             <DebateTranscript3D 
@@ -541,11 +541,11 @@ function App() {
       {/* Vote Scales */}
       <div style={{
         position: 'fixed',
-        right: '32px',
+        right: '16px',
         top: '50%',
         transform: 'translateY(-50%)',
         zIndex: 20,
-        width: '340px'
+        width: 'min(280px, 25vw)'
       }}>
         <VoteScales votes={currentDebate?.votes || { BUY: 0, HOLD: 0, REDUCE: 0 }} txHash={txHash} />
       </div>

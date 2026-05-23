@@ -41,13 +41,13 @@ function DebateTranscript({ steps, isActive }) {
       
       <div
         ref={transcriptRef}
-        className="h-[500px] lg:h-[550px] overflow-y-auto p-4 space-y-4 font-mono text-sm"
+        className="h-[300px] lg:h-[350px] overflow-y-auto p-3 space-y-3 font-mono text-xs"
       >
         {steps.length === 0 && !isActive && (
           <div className="flex flex-col items-center justify-center h-full text-center text-gray-500">
-            <div className="text-6xl mb-4">⚖️</div>
-            <p className="text-sm">No active debate</p>
-            <p className="text-xs mt-2">Click "Start Debate" to begin</p>
+            <div className="text-4xl mb-3">⚖️</div>
+            <p className="text-xs">No active debate</p>
+            <p className="text-[10px] mt-1">Click "Start Debate" to begin</p>
           </div>
         )}
         
@@ -56,19 +56,19 @@ function DebateTranscript({ steps, isActive }) {
           return (
             <div
               key={idx}
-              className={`flex gap-3 p-3 rounded-lg ${config.bg} border-l-4 ${config.border} animate-slide-in`}
+              className={`flex gap-2 p-2 rounded-lg ${config.bg} border-l-4 ${config.border} animate-slide-in`}
             >
-              <div className={`w-10 h-10 rounded-full ${config.bg} flex items-center justify-center text-xl flex-shrink-0 shadow-[0_0_10px_rgba(var(--${config.color}-rgb),0.3)]`}>
+              <div className={`w-7 h-7 rounded-full ${config.bg} flex items-center justify-center text-sm flex-shrink-0`}>
                 {config.icon}
               </div>
               <div className="flex-1">
-                <div className={`text-xs font-bold tracking-wider text-${config.color} mb-1`}>
+                <div className={`text-[10px] font-bold tracking-wider text-${config.color} mb-0.5`}>
                   {config.name}
                 </div>
-                <div className="text-gray-300 leading-relaxed whitespace-pre-wrap">
+                <div className="text-gray-300 leading-relaxed whitespace-pre-wrap text-[11px]">
                   {formatContent(step.content)}
                 </div>
-                <div className="text-xs text-gray-600 mt-2 font-mono">
+                <div className="text-[9px] text-gray-600 mt-1 font-mono">
                   {new Date().toLocaleTimeString()}
                 </div>
               </div>
@@ -79,8 +79,8 @@ function DebateTranscript({ steps, isActive }) {
         {isActive && steps.length === 0 && (
           <div className="flex items-center justify-center h-full">
             <div className="text-center">
-              <div className="w-12 h-12 border-3 border-bull/30 border-t-bull rounded-full animate-spin mx-auto mb-4"></div>
-              <p className="text-gray-500">Initializing debate...</p>
+              <div className="w-8 h-8 border-2 border-bull/30 border-t-bull rounded-full animate-spin mx-auto mb-2"></div>
+              <p className="text-gray-500 text-xs">Initializing debate...</p>
             </div>
           </div>
         )}
