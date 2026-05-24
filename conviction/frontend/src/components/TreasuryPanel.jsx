@@ -17,7 +17,7 @@ function TreasuryPanel({ balance, currentDebate, history }) {
       {/* Treasury Card */}
       <div className="bg-gradient-to-br from-bull/5 to-quant/5 rounded-2xl p-5 text-center border border-bull/20">
         <h3 className="text-xs font-bold tracking-wider text-gray-500 uppercase mb-2">TREASURY</h3>
-        <div className="text-4xl font-bold font-mono text-bull">
+        <div className="text-2xl font-bold font-mono text-bull">
           ${balance.toFixed(2)}
         </div>
         <div className="text-xs text-gray-500 mt-1">USDC on Arc</div>

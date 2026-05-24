@@ -7,7 +7,7 @@ import VoteScales from './components/VoteScales';
 import Controls from './components/Controls';
 import DebateTranscript3D from './components/DebateTranscript3D';
 
-const BACKEND_URL = 'https://conviction-backend.onrender.com';
+const BACKEND_URL = 'http://localhost:3001';
 const api = axios.create({ baseURL: `${BACKEND_URL}/api` });
 
 function App() {
@@ -217,6 +217,7 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+
   // Initialize audio
   useEffect(() => {
     try {
@@ -415,83 +416,85 @@ maxWidth: '540px'
       
       {/* Transcript Bubble */}
       <AnimatePresence>
-        {!isTranscriptOpen && (steps.length > 0 || debateActive) && (
-          <motion.button
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => setIsTranscriptOpen(true)}
-            style={{
-              position: 'fixed',
-              bottom: '32px',
-              left: '32px',
-              zIndex: 30,
-              width: '64px',
-              height: '64px',
-              backgroundColor: 'rgba(0,0,0,0.85)',
-              backdropFilter: 'blur(20px)',
-              borderRadius: '50%',
-              border: '2px solid rgba(255,193,7,0.5)',
-              boxShadow: '0 10px 25px -5px rgba(0,0,0,0.3)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '28px',
-              cursor: 'pointer'
-            }}
-          >
-            💬
-            {steps.length > 0 && (
-              <span style={{
-                position: 'absolute',
-                top: '-8px',
-                right: '-8px',
-                width: '24px',
-                height: '24px',
-                backgroundColor: '#f59e0b',
-                borderRadius: '50%',
-                color: 'black',
-                fontSize: '12px',
-                fontWeight: 'bold',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                {steps.length}
-              </span>
-            )}
-          </motion.button>
-        )}
+        {/* Transcript Bubble - Shows ONLY when transcript is closed but has content */}
+{!isTranscriptOpen && (steps.length > 0) && (
+  <motion.button
+    initial={{ scale: 0, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
+    exit={{ scale: 0, opacity: 0 }}
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}
+    onClick={() => setIsTranscriptOpen(true)}
+    style={{
+      position: 'fixed',
+      bottom: '32px',
+      left: '32px',
+      zIndex: 30,
+      width: '64px',
+      height: '64px',
+      backgroundColor: 'rgba(0,0,0,0.85)',
+      backdropFilter: 'blur(20px)',
+      borderRadius: '50%',
+      border: '2px solid rgba(255,193,7,0.5)',
+      boxShadow: '0 10px 25px -5px rgba(0,0,0,0.3)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: '28px',
+      cursor: 'pointer'
+    }}
+  >
+    💬
+    {steps.length > 0 && (
+      <span style={{
+        position: 'absolute',
+        top: '-8px',
+        right: '-8px',
+        width: '24px',
+        height: '24px',
+        backgroundColor: '#f59e0b',
+        borderRadius: '50%',
+        color: 'black',
+        fontSize: '12px',
+        fontWeight: 'bold',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        {steps.length}
+      </span>
+    )}
+  </motion.button>
+)}
       </AnimatePresence>
       
-      {/* Transcript Panel */}
+     
+      {/* Transcript Panel - Shows when open AND has content */}
       <AnimatePresence>
-        {isTranscriptOpen && (steps.length > 0 || debateActive) && (
-          <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -50, opacity: 0 }}
-            transition={{ type: "spring", damping: 25 }}
-            style={{
-              position: 'fixed',
-              bottom: '32px',
-              left: '120px',
-              zIndex: 30,
-              width: 'min(520px, calc(100vw - 180px))',
-maxWidth: '520px'
-            }}
-          >
-            <DebateTranscript3D 
-              steps={steps} 
-              isActive={debateActive} 
-              currentSpeaker={currentSpeaker}
-              onClose={() => setIsTranscriptOpen(false)}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+{isTranscriptOpen && steps.length > 0 && (
+  <motion.div
+    initial={{ x: -50, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    exit={{ x: -50, opacity: 0 }}
+    transition={{ type: "spring", damping: 25 }}
+    style={{
+      position: 'fixed',
+      bottom: '32px',
+      left: '120px',
+      zIndex: 30,
+      width: 'min(520px, calc(100vw - 180px))',
+      maxWidth: '520px'
+    }}
+  >
+    <DebateTranscript3D 
+      steps={steps} 
+      isActive={debateActive} 
+      currentSpeaker={currentSpeaker}
+      onClose={() => setIsTranscriptOpen(false)}
+    />
+  </motion.div>
+)}
+</AnimatePresence>
       
       {/* Vote Scales */}
    <div className="fixed right-4 top-[28%] z-20 w-[300px] max-w-[24vw] xl:w-[320px] xl:max-w-[320px] lg:block hidden">
@@ -540,12 +543,34 @@ maxWidth: '520px'
         </div>
       )}
       
-      <style>{`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
+    <style>{`
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Mobile responsive fixes */
+  @media (max-width: 768px) {
+    /* Hide vote scales on mobile */
+    .fixed.right-4 {
+      display: none;
+    }
+    
+    /* Adjust transcript position for mobile */
+    div[style*="position: fixed"][style*="bottom: 32px"][style*="left: 120px"] {
+      left: 16px !important;
+      width: calc(100vw - 32px) !important;
+      bottom: 80px !important;
+    }
+    
+    /* Adjust controls panel width for mobile */
+    div[style*="position: fixed"][style*="bottom: 32px"][style*="left: 50%"] {
+      width: calc(100vw - 32px) !important;
+      left: 16px !important;
+      transform: translateX(0) !important;
+    }
+  }
+`}</style>
     </div>
   );
 }

@@ -80,13 +80,14 @@ function DebateTranscript3D({ steps, isActive, currentSpeaker, onClose }) {
       {/* Content */}
       <div 
         ref={scrollRef}
+        className="debate-scroll"
         style={{
           height: '380px',
           overflowY: 'auto',
-          padding: '20px',
+          padding: '16px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px'
+          gap: '12px'
         }}
       >
         <AnimatePresence>
