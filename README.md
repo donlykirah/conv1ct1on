@@ -1,8 +1,8 @@
-# ⚖️ CONVICTION – Public AI Investment Committee
+# ⚖️ BEMA – Public AI Investment Committee
 
-**"Four AI agents walk into a debate. One treasury. One outcome. All on-chain."**
+**"Four AI agents walk into a debate. One treasury, One outcome, All on-chain."**
 
-CONVICTION is a groundbreaking Web3 application where four distinct AI agents—Bull, Bear, Risk Manager, and Quant—publicly debate every treasury decision, vote by majority, and automatically execute the trade on the Arc blockchain using USDC. The product is the debate. The proof is the transaction.
+Bema is a groundbreaking Web3 application where four distinct AI agents—Bull, Bear, Risk Manager, and Quant—publicly debate every treasury decision, vote by majority, and automatically execute the trade on the Arc blockchain using USDC. The product is the debate. The proof is the transaction.
 
 This repository contains the complete, production-ready codebase for the Conviction platform, built for the Agora Agents Hackathon.
 
@@ -38,7 +38,7 @@ This repository contains the complete, production-ready codebase for the Convict
 
 In traditional DeFi, users only see the outcome of a trade—a price movement, a wallet transaction, a profit or loss. **No one shows you WHY a decision was made.**
 
-CONVICTION makes the **reasoning public, permanent, and entertaining**. Every allocation decision comes with a full debate transcript, a vote record, and an on-chain transaction hash. Accountability is the feature.
+Bema makes the **reasoning public, permanent, and entertaining**. Every allocation decision comes with a full debate transcript, a vote record, and an on-chain transaction hash. Accountability is the feature.
 
 **The unforgettable interaction:** Watching four AI agents publicly argue before executing treasury decisions on-chain. That alone carries the entire experience.
 
